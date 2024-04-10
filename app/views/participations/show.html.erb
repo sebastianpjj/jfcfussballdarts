@@ -1,0 +1,9 @@
+
+<h1>hello!</h1>
+<p>
+  <%= "this is payment_page for team #{@record.team.name} for competition #{@competition.name}" %>
+</p>
+<p>
+players:
+  <%= "#{@record.team.players.map(&:name).join(", ")}"%>
+</p>

@@ -1,0 +1,16 @@
+development:
+  client_id: ASLJWpuUSjsquXA1M5wpIg4S2IDCiz761l8Z595LeyYUV2Siz8-iKtqMA3FvpHM3ZD45JFKATvPB8088
+  client_secret: EDzoQrusGEFEcjh3-gzqagL4sV9ZoKXQMNClSo0y0u6RZZDR9c7MniqGZ6cGvx0SxnUCLBnMOlOOeaSB
+
+test:
+  adapter: test
+
+production:
+  # encrypt!
+
+
+
+# sandbox cards
+# card_number: 4032034446037288
+# Expiry_date: Any
+# CVC_code: Any
