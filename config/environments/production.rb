@@ -90,4 +90,13 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  Rails.application.config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins 'www.eintracht-feldberg.de',
+      resource '*',
+      headers: :any,
+      methods: [:get, :post, :patch, :put, :options, :delete]
+    end
+  end
 end

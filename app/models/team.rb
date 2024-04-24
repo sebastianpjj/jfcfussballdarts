@@ -4,6 +4,9 @@ class Team < ApplicationRecord
   has_many :payments, through: :participations
   has_many :players
 
+  validates :name, uniqueness: true
+
+
   accepts_nested_attributes_for :players
 
   def self.ransackable_attributes(auth_object = nil)

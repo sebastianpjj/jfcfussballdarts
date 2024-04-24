@@ -4,11 +4,7 @@ class ParticipationsController < ApplicationController
 
   def create
     @competition = Competition.find_by!(slug: params[:slug])
-    @record = Participation.new(create_params)
-    @payment = @record.build_payment(
-      amount_cents:     @competition.participation_charge_cents,
-      amount_currency:  @competition.participation_charge_currency
-    )
+    @record = @competition.participations.new(create_params)
     @record.save
 
     unless @record.save
@@ -29,12 +25,11 @@ class ParticipationsController < ApplicationController
   def create_params
     params.require(:participation).permit(
       :competition_id,
+      training_session_participations_attributes: [:training_session_id],
       team_attributes: [
-        :name, :email, :phone,
+        :name, :slogan, :email, :phone,
         players_attributes: [:name, :is_captain]
       ]
-
     )
   end
-
 end

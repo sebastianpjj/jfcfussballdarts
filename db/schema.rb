@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_10_154508) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_22_105911) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -39,6 +39,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_10_154508) do
 
   create_table "competitions", force: :cascade do |t|
     t.string "name"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.integer "participation_charge_cents"
     t.string "participation_charge_currency"
     t.datetime "created_at", null: false
@@ -50,20 +52,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_10_154508) do
   create_table "participations", force: :cascade do |t|
     t.integer "team_id"
     t.integer "competition_id"
-    t.integer "payment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["competition_id"], name: "index_participations_on_competition_id"
-    t.index ["payment_id"], name: "index_participations_on_payment_id"
     t.index ["team_id"], name: "index_participations_on_team_id"
   end
 
   create_table "payments", force: :cascade do |t|
-    t.integer "amount_cents"
-    t.string "amount_currency"
-    t.string "status"
+    t.integer "participation_id"
+    t.boolean "was_payed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "amount_cents", null: false
+    t.string "amount_currency"
+    t.index ["participation_id"], name: "index_payments_on_participation_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -81,6 +83,28 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_10_154508) do
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slogan"
+  end
+
+  create_table "training_session_participations", force: :cascade do |t|
+    t.integer "training_session_id"
+    t.integer "participation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["participation_id"], name: "index_training_session_participations_on_participation_id"
+    t.index ["training_session_id"], name: "index_training_session_participations_on_training_session_id"
+  end
+
+  create_table "training_sessions", force: :cascade do |t|
+    t.string "name"
+    t.integer "competition_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "participation_charge_cents"
+    t.string "participation_charge_currency"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["competition_id"], name: "index_training_sessions_on_competition_id"
   end
 
 end
