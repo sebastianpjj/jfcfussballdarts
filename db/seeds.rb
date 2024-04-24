@@ -8,4 +8,4 @@
 
 
 
-AdminUser.create!(email: 'admin@example.com', password: 'Password123!', password_confirmation: 'Password123!')
+AdminUser.create!(email: 'sp@eintracht-feldberg.de', password: 'Password123!Keks!', password_confirmation: 'Password123!Keks!')

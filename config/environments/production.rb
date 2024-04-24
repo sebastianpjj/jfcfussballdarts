@@ -93,7 +93,10 @@ Rails.application.configure do
 
   Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
-      origins 'www.eintracht-feldberg.de'
+      origins 'https://www.eintracht-feldberg.de',
+              'www.eintracht-feldberg.de'
+              'https://fussballdart.mre-it.de'
+              'fussballdart.mre-it.de'
       resource '*',
       headers: :any,
       methods: [:get, :post, :patch, :put, :options, :delete]
