@@ -5,13 +5,13 @@ class ParticipationsController < ApplicationController
   def create
     @competition = Competition.find_by!(slug: params[:slug])
     @record = @competition.participations.new(create_params)
-    @record.save
 
     unless @record.save
       render json: @record.errors, status: :unprocessable_entity
       return
     end
 
+    @record.players.first.update_column(:is_captain, true)
     render :show
   end
 

@@ -1,9 +1,11 @@
 class Participation < ApplicationRecord
   belongs_to  :team
   has_many :players, through: :team
-  belongs_to  :competition
+  belongs_to :competition
   has_one  :payment
   has_many :training_session_participations
+
+  validate :validate_team_name_uniqueness
 
   accepts_nested_attributes_for :team
   accepts_nested_attributes_for :training_session_participations
@@ -26,5 +28,14 @@ class Participation < ApplicationRecord
 
   def to_s
     return "#{self.team.name} | #{self.competition.name}"
+  end
+
+  def validate_team_name_uniqueness
+    teams = self.competition.teams
+    teams = teams.where.not(id: self.id) if self.persisted?
+
+    if teams.where(name: self.team.name).exists?
+      self.errors.add("team.name", "Bitte wähle einen anderen Teamnamen. Dieser ist bereits vergeben.")
+    end
   end
 end
