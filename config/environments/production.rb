@@ -68,6 +68,21 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
+  config.action_mailer.default_url_options  = { host: 'eintracht-feldberg.de', protocol: :https }
+  config.action_mailer.asset_host           = 'https://fussballdart.mre-it.de/'
+  config.asset_host                         = 'https://fussballdart.mre-it.de/'
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.ionos.de",
+    :domain               => "smtp.ionos.de",
+    :port                 => 587,
+    :user_name            => "sp@s-pj.de",
+    :password             => "nYm@LZgi7+6rBR=",
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
+
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true

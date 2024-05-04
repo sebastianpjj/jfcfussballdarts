@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_22_105911) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_03_221731) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -49,11 +49,28 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_22_105911) do
     t.index ["slug"], name: "index_competitions_on_slug"
   end
 
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string "locked_by"
+    t.string "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
   create_table "participations", force: :cascade do |t|
     t.integer "team_id"
     t.integer "competition_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
     t.index ["competition_id"], name: "index_participations_on_competition_id"
     t.index ["team_id"], name: "index_participations_on_team_id"
   end

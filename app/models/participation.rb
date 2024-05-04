@@ -9,6 +9,7 @@ class Participation < ApplicationRecord
 
   accepts_nested_attributes_for :team
   accepts_nested_attributes_for :training_session_participations
+  has_secure_token :confirmation_token
 
   after_commit do
     p = self.payment || Payment.new
@@ -16,14 +17,22 @@ class Participation < ApplicationRecord
     p.amount_cents = self.competition.participation_charge_cents
     p.amount_cents += self.training_session_participations.sum {|r| r.training_session.participation_charge_cents}
     p.save
+    self.send_confirmation_mail
   end
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["competition_id"]
+  def send_confirmation_mail
+    TeamMailer.confirmation(self).deliver_now
   end
 
-  def self.ransackable_associations(auth_object = nil)
-    ["competition", "team"]
+  def send_confirmed_mail
+    TeamMailer.confirmation_complete(self).deliver_now
+  end
+
+  def confirm!
+    unless self.confirmed?
+      self.update_column(:confirmed_at, Time.now)
+      self.send_confirmed_mail
+    end
   end
 
   def to_s
@@ -37,5 +46,17 @@ class Participation < ApplicationRecord
     if teams.where(name: self.team.name).exists?
       self.errors.add("team.name", "Bitte wähle einen anderen Teamnamen. Dieser ist bereits vergeben.")
     end
+  end
+
+  def confirmed?
+    return self.confirmed_at.present?
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["competition_id"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["competition", "team"]
   end
 end

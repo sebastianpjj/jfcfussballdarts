@@ -20,6 +20,22 @@ class ParticipationsController < ApplicationController
     @competition = @record.competition
   end
 
+  def confirm_participation
+    participation = Participation.find_by(confirmation_token: params[:confirmation_token])
+
+    if participation.present?
+      participation.confirm!
+
+      @team = participation.team
+      @name = participation.team.name
+
+      render 'participations/confirmed'
+      return
+    end
+
+    render 'error_pages/not_found'
+  end
+
   private
 
   def create_params

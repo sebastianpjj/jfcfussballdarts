@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :competitions, only: %w[show]
-  resources :participations, only: %w[create show]
+  resources :participations, only: %w[create show] do
+    collection do
+      get :confirm_participation
+    end
+  end
+
 
   root to: "home#index"
   get   "/:slug" => "competitions#show"
