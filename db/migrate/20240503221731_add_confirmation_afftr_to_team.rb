@@ -4,8 +4,7 @@ class AddConfirmationAfftrToTeam < ActiveRecord::Migration[7.0]
     add_column :participations, :confirmed_at, :datetime
 
     Participation.all.each do |t|
-      t.confirmation_token = SecureRandom.hex(15)
-      t.save
+      t.update_column(:confirmation_token, SecureRandom.hex(15))
     end
   end
 
