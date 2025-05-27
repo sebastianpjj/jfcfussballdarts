@@ -85,6 +85,7 @@ group :development do
   # gem "spring"
   gem "capistrano", "~> 3.10", require: false
   gem "capistrano-rails", "~> 1.6", require: false
+  gem "ed25519", ">= 1.2", "< 2.0"
 end
 
 group :test do
