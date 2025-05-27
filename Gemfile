@@ -65,6 +65,14 @@ gem 'awesome_print'
 gem 'haml'
 gem "haml-rails", "~> 2.0"
 
+# deployment with Capistrano
+gem "capistrano", "~> 3.10", require: false
+gem "capistrano-rails", "~> 1.6", require: false
+gem "ed25519", ">= 1.2", "< 2.0"
+gem "bcrypt_pbkdf", ">= 1.0", "< 2.0"
+gem 'capistrano-passenger'
+gem 'capistrano-rvm'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -83,12 +91,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-  gem "capistrano", "~> 3.10", require: false
-  gem "capistrano-rails", "~> 1.6", require: false
-  gem "ed25519", ">= 1.2", "< 2.0"
-  gem "bcrypt_pbkdf", ">= 1.0", "< 2.0"
-  gem 'capistrano-passenger'
-  gem 'capistrano-rvm'
+
 end
 
 group :test do

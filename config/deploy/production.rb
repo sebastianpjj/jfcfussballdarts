@@ -60,4 +60,6 @@ server "135.220.17.20", user: "azureuser", roles: %w{app db web}
 #     # password: "please use keys"
 #   }
 
+# set :rvm_custom_path, '/usr/local/rvm'
+set :rvm_custom_path, '~/.rvm'
 set :deploy_to, "/var/www/jfcfussballdarts"
