@@ -7,47 +7,36 @@ set :repo_url, "git@github.com:sebastianpjj/jfcfussballdarts.git"
 # Default branch is :master
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
-# Default deploy_to directory is /var/www/my_app_name
+# Default deploy_to directory
 set :deploy_to, "/var/www/jfcfussballdarts"
 
+# Ruby version managed by RVM
 set :rvm_ruby_version, '3.1.4'
 
-# Default value for :format is :airbrussh.
-# set :format, :airbrussh
+# Use PTY for some Rails/RVM setups
+set :pty, true
 
-# You can configure the Airbrussh format using :format_options.
-# These are the defaults.
-# set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
-
-# Default value for :pty is false
-# set :pty, true
-
-# Default value for :linked_files is []
-append :linked_files, "config/database.yml", 'config/master.key'
-
-# Default value for linked_dirs is []
+# Linked files and directories (shared between releases)
+append :linked_files, "config/database.yml", "config/master.key"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "vendor", "storage"
 
-# Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+# Keep the last 5 releases
+set :keep_releases, 5
 
-# Default value for local_user is ENV['USER']
-# set :local_user, -> { `git config user.name`.chomp }
-
-# Default value for keep_releases is 5
-# set :keep_releases, 2
-
-# Uncomment the following to require manually verifying the host key before first deploy.
+# Uncomment to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
-
-
 
 namespace :deploy do
   namespace :check do
     before :linked_files, :set_master_key do
       on roles(:app) do
         unless test("[ -f #{shared_path}/config/master.key ]")
-          upload! 'config/master.key', "#{shared_path}/config/master.key"
+          if File.exist?("config/master.key")
+            upload! "config/master.key", "#{shared_path}/config/master.key"
+          else
+            error "Missing config/master.key! Please make sure it exists."
+            exit 1
+          end
         end
       end
     end
