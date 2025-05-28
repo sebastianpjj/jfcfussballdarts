@@ -49,14 +49,16 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.ionos.de",
-    :domain               => "smtp.ionos.de",
-    :port                 => 587,
-    :user_name            => "sp@s-pj.de",
-    :password             => "nYm@LZgi7+6rBR=",
-    :authentication       => "plain",
-    :enable_starttls_auto => true
+    address:              'smtp.azurecomm.net',
+    port:                 587,
+    domain:               ENV['SMTP_AZURE_SERVICE_DOMAIN'],
+                          # Username is <Azure Communication Services Resource name>.<Entra Application ID>.<Entra Tenant ID>
+    user_name:            ENV['SMTP_AZURE_SERVICE_USERNAME'],
+    password:             ENV['SMTP_AZURE_SERVICE_PW'],
+    authentication:       :login,
+    enable_starttls_auto: true
   }
+
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
