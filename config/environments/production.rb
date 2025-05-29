@@ -74,14 +74,15 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.azurecomm.net',
-    port:                 587,
     domain:               ENV['SMTP_AZURE_SERVICE_DOMAIN'],
-                          # Username is < Azure Communication Services Resource name>. < Entra Application ID>. < Entra Tenant ID>
+    # Username is <Azure Communication Services Resource name>.<Entra Application ID>.< Entra Tenant ID>
     user_name:            ENV['SMTP_AZURE_SERVICE_USERNAME'],
     password:             ENV['SMTP_AZURE_SERVICE_PW'],
     authentication:       :login,
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
+    port:                 587
   }
+
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
