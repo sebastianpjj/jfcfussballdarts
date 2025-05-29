@@ -6,6 +6,12 @@ class ParticipationsController < ApplicationController
     @competition = Competition.find_by!(slug: params[:slug])
     @record = @competition.participations.new(create_params)
 
+    Rails.logger.error("------------------------------------ 1~~~~~~ ")
+    Rails.logger.error("ENV['SMTP_AZURE_SERVICE_DOMAIN']: #{ENV['SMTP_AZURE_SERVICE_DOMAIN']}")
+    Rails.logger.error("ENV['SMTP_AZURE_SERVICE_USERNAME']: #{ENV['SMTP_AZURE_SERVICE_USERNAME']}")
+    Rails.logger.error("ENV['SMTP_AZURE_SERVICE_PW']: #{ENV['SMTP_AZURE_SERVICE_PW']}")
+    Rails.logger.error("------------------------------------ 1~~~~~~ ")
+
     unless @record.save
       render json: @record.errors, status: :unprocessable_entity
       return
