@@ -111,6 +111,8 @@ Rails.application.configure do
     allow do
       origins 'https://www.eintracht-feldberg.de',
               'www.eintracht-feldberg.de',
+              'www.eintracht-feldberg.net',
+              'www.fussballdart.eintracht-feldberg.net',
               'https://www.eintracht-feldberg.de/fussballdart'
       resource '*',
       headers: :any,
