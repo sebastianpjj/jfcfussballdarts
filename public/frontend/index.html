@@ -8,17 +8,16 @@
   <!-- Adopted from www.eintracht-feldberg.de: Use Open Sans and Oswald -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Oswald:400,700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="./assets/main.d190c3ff.js"></script>
-  <link rel="stylesheet" href="./assets/main.78bc1895.css">
   <style>
     body {
-      margin: 0;
+      margin: auto;
       font-family: 'Open Sans', Arial, sans-serif;
       background: #f7f7f7;
       color: #222;
       font-size: 18px;
       font-weight: 400;
       line-height: 1.6;
+      max-width: 936px
     }
 
     .cta {
@@ -60,7 +59,7 @@
       border-radius: 16px;
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
       padding: 32px 24px;
-      max-width: 340px;
+      max-width: 260px;
       flex: 1 1 300px;
       text-align: center;
       font-family: 'Open Sans', Arial, sans-serif;
@@ -98,7 +97,7 @@
 
     .intro-container {
       display: flex;
-      max-width: 1100px;
+      max-width: 936px;
       width: 100%;
       overflow: hidden;
       background: #fff;
@@ -138,77 +137,6 @@
       font-weight: 400;
     }
 
-    #jfcfussballdarts-app-root,
-    #jfcfussballdarts-app-root * {
-      font-family: 'Open Sans', Arial, sans-serif !important;
-      font-size: 18px;
-      font-weight: 400;
-      color: #222;
-      line-height: 1.6;
-      letter-spacing: 0.02em;
-      box-sizing: border-box;
-    }
-
-    #jfcfussballdarts-app-root h1,
-    #jfcfussballdarts-app-root h2,
-    #jfcfussballdarts-app-root h3,
-    #jfcfussballdarts-app-root h4 {
-      font-family: 'Oswald', 'Open Sans', Arial, sans-serif !important;
-      font-weight: 700;
-      color: #222;
-      letter-spacing: 1px;
-      margin-top: 1.2em;
-      margin-bottom: 0.6em;
-    }
-
-    #jfcfussballdarts-app-root h1 {
-      font-size: 2.2rem;
-    }
-
-    #jfcfussballdarts-app-root h2 {
-      font-size: 1.5rem;
-    }
-
-    #jfcfussballdarts-app-root h3 {
-      font-size: 1.2rem;
-    }
-
-    #jfcfussballdarts-app-root h4 {
-      font-size: 1.1rem;
-    }
-
-    #jfcfussballdarts-app-root p,
-    #jfcfussballdarts-app-root label,
-    #jfcfussballdarts-app-root input,
-    #jfcfussballdarts-app-root select,
-    #jfcfussballdarts-app-root textarea,
-    #jfcfussballdarts-app-root button {
-      font-family: 'Open Sans', Arial, sans-serif !important;
-      font-size: 18px;
-      font-weight: 400;
-      color: #222;
-      line-height: 1.6;
-    }
-
-    #jfcfussballdarts-app-root button,
-    #jfcfussballdarts-app-root input[type="submit"] {
-      font-family: 'Oswald', 'Open Sans', Arial, sans-serif !important;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      background: #618F1D;
-      color: #fff;
-      border: none;
-      border-radius: 30px;
-      padding: 12px 28px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    #jfcfussballdarts-app-root button:hover,
-    #jfcfussballdarts-app-root input[type="submit"]:hover {
-      background: #b71c2b;
-    }
 
     @media (max-width: 900px) {
       .intro-container {
@@ -276,9 +204,15 @@
 
   <section class="intro-section">
     <div class="cta" id="anmeldung">
-      <div id="jfcfussballdarts-app-root"></div>
+      <iframe src="https://eintracht-feldberg.net/frontend/form.html" title="Anmeldung Fußball Dart - Eintracht Feldberg" allowpaymentrequest="true" height="1500" width="100%" style="border: none;"></iframe>
     </div>
   </section>
+
+  <!-- <section class="intro-section">
+    <div class="cta" id="anmeldung">
+      <div id="jfcfussballdarts-app-root"></div>
+    </div>
+  </section> -->
 
 </body>
 
