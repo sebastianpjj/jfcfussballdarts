@@ -112,7 +112,9 @@ Rails.application.configure do
       origins 'https://www.eintracht-feldberg.de',
               'www.eintracht-feldberg.de',
               'www.eintracht-feldberg.net',
-              'www.fussballdart.eintracht-feldberg.net',
+              'eintracht-feldberg.net',
+              'fussballdart.eintracht-feldberg.net',
+              'fussballdart.eintracht-feldberg.net/jfcfussballdarts2025',
               'https://www.eintracht-feldberg.de/fussballdart'
       resource '*',
       headers: :any,
