@@ -68,8 +68,8 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
-  config.action_mailer.default_url_options  = { host: 'jfcfussballdarts-3ea5f1f136ed.herokuapp.com/', protocol: :https }
-  config.action_mailer.asset_host           = 'https://jfcfussballdarts-3ea5f1f136ed.herokuapp.com/'
+  config.action_mailer.default_url_options  = { host: 'fussballdart.eintracht-feldberg.net/', protocol: :https }
+  config.action_mailer.asset_host           = 'https://fussballdart.eintracht-feldberg.net/'
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
