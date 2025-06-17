@@ -115,6 +115,7 @@ Rails.application.configure do
               'eintracht-feldberg.net',
               'fussballdart.eintracht-feldberg.net',
               'fussballdart.eintracht-feldberg.net/jfcfussballdarts2025',
+              'https://eintracht-feldberg.net',
               'https://www.eintracht-feldberg.de/fussballdart',
               'https://www.eintracht-feldberg.net/fussballdart',
               'https://.eintracht-feldberg.net/fussballdart'
