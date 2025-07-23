@@ -65,3 +65,4 @@ set :rvm_ruby_version, '3.1.4'
 set :rvm_custom_path, '/usr/share/rvm'
 set :deploy_to, "/var/www/jfcfussballdarts"
 set :passenger_restart_with_touch, true
+set :passenger_ruby, '/usr/share/rvm/gems/ruby-3.1.4/wrappers/ruby'
