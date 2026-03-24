@@ -113,13 +113,19 @@ Rails.application.configure do
               'www.eintracht-feldberg.de',
               'www.eintracht-feldberg.net',
               'eintracht-feldberg.net',
+              'eintracht-feldberg.de',
               'fussballdart.eintracht-feldberg.net',
+              'fussballdart.eintracht-feldberg.de',
               'fussballdart.eintracht-feldberg.net/jfcfussballdarts2025',
+              'fussballdart.eintracht-feldberg.de/jfcfussballdarts2025',
               'https://eintracht-feldberg.net',
-              'https://www.eintracht-feldberg.de/fussballdart',
+              'https://eintracht-feldberg.de',
               'https://www.eintracht-feldberg.net/fussballdart',
+              'https://www.eintracht-feldberg.de/fussballdart',
               'https://eintracht-feldberg.net/fussballdart',
+              'https://eintracht-feldberg.de/fussballdart',
               'https://eintracht-feldberg.net/'
+              'https://eintracht-feldberg.de/'
       resource '*',
       headers: :any,
       methods: [:get, :post, :patch, :put, :options, :delete]
