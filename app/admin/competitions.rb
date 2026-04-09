@@ -3,7 +3,7 @@ ActiveAdmin.register Competition do
   menu priority: 2
 
   actions :all, except: %i[destroy]
-  permit_params :name, :slug, :participation_charge_cents, :start_date, :end_date
+  permit_params :name, :slug, :participation_charge_cents, :start_date, :end_date, :is_current
 
   filter :name
 
@@ -15,6 +15,8 @@ ActiveAdmin.register Competition do
         f.input :end_date, label: "Ende"
         f.input :participation_charge_cents, label: "Teilnahmegebühr in Cents"
         f.input :slug
+        f.input :is_current, label: "Aktuelle Competition", as: :boolean,
+                             hint: "Wenn aktiviert, wird diese Competition als aktuell markiert und bei allen anderen automatisch deaktiviert."
     end
     f.actions
   end
@@ -24,6 +26,7 @@ ActiveAdmin.register Competition do
     column "Name", :name
     column "Beginn", :start_date
     column "Ende", :end_date
+    column "Aktuelle Competition", :is_current
     actions
   end
 
@@ -42,6 +45,7 @@ ActiveAdmin.register Competition do
         r.participation_charge.format(symbol: '€ ')
       end
       row :slug
+      row "Aktuelle Competition", :is_current
       row :updated_at
       row :created_at
     end

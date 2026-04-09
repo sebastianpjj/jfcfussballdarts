@@ -20,8 +20,18 @@ class Competition < ApplicationRecord
     self.participation_charge_currency ||= "EUR"
   end
 
+  before_save :ensure_single_current
+  
+  private
+  
+  def ensure_single_current
+    if is_current? && is_current_changed?
+      Competition.where(is_current: true).where.not(id: id).update_all(is_current: false)
+    end
+  end
+
   def self.ransackable_attributes(auth_object = nil)
-    return ["id", "name"]
+    return ["id", "name", "is_current"]
   end
 
   def self.ransackable_associations(auth_object = nil)

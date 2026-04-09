@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_03_221731) do
+ActiveRecord::Schema[7.0].define(version: 2026_04_09_000001) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -46,6 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_03_221731) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug", null: false
+    t.boolean "is_current", default: false, null: false
     t.index ["slug"], name: "index_competitions_on_slug"
   end
 
