@@ -9,6 +9,7 @@ class Competition < ApplicationRecord
   monetize :participation_charge_cents
 
   validates :slug, uniqueness: true
+  validates :slug, exclusion: { in: %w[current], message: "ist reserviert" }
   validates :name, uniqueness: true
   validates :start_date, uniqueness: true
   validates :end_date, uniqueness: true
@@ -21,9 +22,9 @@ class Competition < ApplicationRecord
   end
 
   before_save :ensure_single_current
-  
+
   private
-  
+
   def ensure_single_current
     if is_current? && is_current_changed?
       Competition.where(is_current: true).where.not(id: id).update_all(is_current: false)

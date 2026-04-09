@@ -3,14 +3,8 @@ class ParticipationsController < ApplicationController
 
 
   def create
-    @competition = Competition.find_by!(slug: params[:slug])
+    @competition = find_competition_by_slug_or_current!()
     @record = @competition.participations.new(create_params)
-
-    Rails.logger.error("------------------------------------ 1~~~~~~ ")
-    Rails.logger.error("ENV['SMTP_AZURE_SERVICE_DOMAIN']: #{ENV['SMTP_AZURE_SERVICE_DOMAIN']}")
-    Rails.logger.error("ENV['SMTP_AZURE_SERVICE_USERNAME']: #{ENV['SMTP_AZURE_SERVICE_USERNAME']}")
-    Rails.logger.error("ENV['SMTP_AZURE_SERVICE_PW']: #{ENV['SMTP_AZURE_SERVICE_PW']}")
-    Rails.logger.error("------------------------------------ 1~~~~~~ ")
 
     unless @record.save
       render json: @record.errors, status: :unprocessable_entity
@@ -43,6 +37,12 @@ class ParticipationsController < ApplicationController
   end
 
   private
+
+  def find_competition_by_slug_or_current!
+    return Competition.find_by!(is_current: true) if params[:slug] == 'current'
+
+    Competition.find_by!(slug: params[:slug])
+  end
 
   def create_params
     params.require(:participation).permit(
