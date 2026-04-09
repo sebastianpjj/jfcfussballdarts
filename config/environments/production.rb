@@ -110,6 +110,7 @@ Rails.application.configure do
   Rails.application.config.middleware.insert_before 0, Rack::Cors do
     allow do
       origins 'https://www.eintracht-feldberg.de',
+              'https://www.eintracht-feldberg.net',
               'www.eintracht-feldberg.de',
               'www.eintracht-feldberg.net',
               'eintracht-feldberg.net',

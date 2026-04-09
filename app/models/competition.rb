@@ -12,8 +12,8 @@ class Competition < ApplicationRecord
   validates :name, uniqueness: true
   validates :start_date, uniqueness: true
   validates :end_date, uniqueness: true
-  validates :participation_charge_cents, uniqueness: true
-  validates :participation_charge_currency, uniqueness: true
+  validates :participation_charge_cents, presence: true
+  validates :participation_charge_currency, presence: true
 
   before_validation do
     self.slug = self.slug.parameterize
