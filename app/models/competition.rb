@@ -17,6 +17,7 @@ class Competition < ApplicationRecord
 
   before_validation do
     self.slug = self.slug.parameterize
+    self.participation_charge_currency ||= "EUR"
   end
 
   def self.ransackable_attributes(auth_object = nil)
