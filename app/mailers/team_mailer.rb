@@ -26,4 +26,15 @@ class TeamMailer < ApplicationMailer
       subject: 'Bestätigung deiner Anmeldung zum Fussballdart-Turnier | JFC Eintracht Feldberg',
     )
   end
+
+  def confirmation_complete_organizer(participation)
+    @participation = participation
+    @team = participation.team
+    @name = participation.team.name
+
+    mail(
+      to: 'event@eintracht-feldberg.de',
+      subject: 'Neue bestaetigte Anmeldung zum Fussballdart-Turnier | JFC Eintracht Feldberg',
+    )
+  end
 end

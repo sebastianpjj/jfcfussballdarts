@@ -26,6 +26,7 @@ class Participation < ApplicationRecord
 
   def send_confirmed_mail
     TeamMailer.confirmation_complete(self).deliver_now
+    TeamMailer.confirmation_complete_organizer(self).deliver_now
   end
 
   def confirm!
