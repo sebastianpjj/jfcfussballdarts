@@ -12,7 +12,7 @@ class TeamMailer < ApplicationMailer
 
     mail(
       to: @team.email,
-      subject: 'Deine Anmeldung beim Fussballdart-Turnier | JFC Eintracht Feldberg',
+      subject: 'JFC Eintracht Feldberg | Deine Anmeldung beim Fussballdart-Turnier',
     )
   end
 
@@ -23,7 +23,7 @@ class TeamMailer < ApplicationMailer
 
     mail(
       to: @team.email,
-      subject: 'Bestätigung deiner Anmeldung zum Fussballdart-Turnier | JFC Eintracht Feldberg',
+      subject: 'Bestätigung JFC Eintracht Feldberg | deiner Anmeldung zum Fussballdart-Turnier',
     )
   end
 
@@ -34,7 +34,7 @@ class TeamMailer < ApplicationMailer
 
     mail(
       to: 'event@eintracht-feldberg.de',
-      subject: 'Neue bestaetigte Anmeldung zum Fussballdart-Turnier | JFC Eintracht Feldberg',
+      subject: 'Neue JFC Eintracht Feldberg | bestaetigte Anmeldung zum Fussballdart-Turnier',
     )
   end
 end
