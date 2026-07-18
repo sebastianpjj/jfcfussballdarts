@@ -7,6 +7,18 @@ ActiveAdmin.register Participation do
 
   filter :competition
 
+  csv do
+    column(:id)
+    column("Competition") { |participation| participation.competition&.name }
+    column("Team") { |participation| participation.team&.name }
+    column("Captain") { |participation| participation.team&.players&.find_by(is_captain: true)&.name }
+    column("Captain Email") { |participation| participation.team&.email }
+    column("Captain Telephone") { |participation| participation.team&.phone }
+    column("Confirmed") { |participation| participation.confirmed? }
+    column(:created_at)
+    column(:updated_at)
+  end
+
 
   index do
     id_column
